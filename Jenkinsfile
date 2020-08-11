@@ -1,7 +1,7 @@
 
 pipeline {
     environment{
-    registry = "pranshul005/ChairShoppingCart"
+    registry = "pranshul005/chairshoppingcart"
     registryCredential = "docker_hub"
     dockerImage = ''
   }
