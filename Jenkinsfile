@@ -25,7 +25,7 @@ pipeline {
     }
      stage('build the project') {
       steps {
-        echo 'building ..........'
+        echo 'building the project'
         sh 'npm run build'
        
       }
@@ -38,7 +38,25 @@ pipeline {
         }
       }
     }
-
+    stage('Push docker image'){
+      steps{
+        echo "Pushing docker image"
+        script{
+           docker.withRegistry('',registryCredential) {
+            dockerImage.push()
+            dockerImage.push('latest')
+          }
+        }
+      }      
+    }
+    stage('Deploy to Dev'){   
+      steps{
+        echo "Deploying to dev environment"
+        sh 'docker rm -f chairshoppingcart || true'
+        sh 'docker run -d --name=chairshoppingcart -p 5000:80 pranshul005/chairshoppingcart'
+        //sh 'npm start'
+      }
+    }
     
   }
 }
