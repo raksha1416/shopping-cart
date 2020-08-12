@@ -1,8 +1,8 @@
 
 pipeline {
     environment{
-    registry = "pranshul005/chairshoppingcart"
-    registryCredential = "docker_hub"
+    registry = "raksha1416/shoppingcart"
+    registryCredential = "docker_hub_raksha"
     dockerImage = ''
   }
   agent any
