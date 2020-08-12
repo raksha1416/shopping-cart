@@ -1,4 +1,3 @@
-
 pipeline {
     environment{
     registry = "raksha1416/shoppingcart"
